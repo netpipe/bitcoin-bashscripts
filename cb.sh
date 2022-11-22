@@ -22,8 +22,8 @@ if [[ $balance != $oldbalance ]]; then
     echo "balance updated"
 fi
 oldbalance=$balance
-sleep 10
-#sleep 1500 #10-15 min
+#sleep 10
+sleep 1500 #10-15 min
 done
 #0.05185304
 
