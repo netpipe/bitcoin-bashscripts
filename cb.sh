@@ -6,11 +6,18 @@ oldbalance=0
 if [[ $1 != "" ]] ; then ADDRESS=$1 ; fi # use alternate address if specified
 while true;do
 echo $ADDRESS;
-balance=$(wget -qO- https://blockchain.info/balance?active=$ADDRESS 2>&1 | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
+wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
+#balance=$(wget -qO- https://blockchain.info/balance?active=$ADDRESS 2>&1 | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
+#echo "Balance : $balance"
+
+transactions=$(cat ./tbalance | grep -Po '"n_tx":\K[0-9]+' | awk '{s=$1/1} END {printf "%0.1f\n", s}')
+balance=$(cat ./tbalance | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
 echo "Balance : $balance"
-if [[ balance != oldbalance ]]; then
+echo "Balance : $transactions"
+
+if [[ $balance != $oldbalance ]]; then
     #beep
-    echo -en "\007".
+    echo -en "\007"
     spd-say 'Funds Have Been Deposited'
     echo "balance updated"
 fi
