@@ -13,7 +13,7 @@ wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
 transactions=$(cat ./tbalance | grep -Po '"n_tx":\K[0-9]+' | awk '{s=$1/1} END {printf "%0.1f\n", s}')
 balance=$(cat ./tbalance | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
 echo "Balance : $balance"
-echo "Balance : $transactions"
+echo "transactions : $transactions"
 
 if [[ $balance != $oldbalance ]]; then
     #beep
