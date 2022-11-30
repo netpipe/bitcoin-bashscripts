@@ -4,7 +4,7 @@ ADDRESS2="bc1qu3ds562w2av52rz8xl0pm5jkk66s5ep95e4wwp" #using my own for now you 
 oldbalance=0
 n=0
 
-if [[ $1 > "" ]] ; then ADDRESS="" ; fi # use alternate address if specified
+if [[ $1 > "" ]] ; then ADDRESS=$1 ; fi # use alternate address if specified
 if [[ $1 = "1" ]] ; then ADDRESS=$ADDRESS2 ; fi # use alternate address if specified
 if [[ $1 = "" ]] ; then echo "insert address" ; fi # use alternate address if specified
 while true;do
