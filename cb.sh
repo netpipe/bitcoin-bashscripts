@@ -4,7 +4,7 @@ ADDRESS2="bc1qu3ds562w2av52rz8xl0pm5jkk66s5ep95e4wwp" #using my own for now you 
 oldbalance=0
 n=0
 
-if [[ $1 > "" ]] ; then ADDRESS=$1 ; fi # use alternate address if specified
+if [[ $1 != "" ]] ; then ADDRESS=$1 ; fi # use alternate address if specified
 if [[ $1 = "1" ]] ; then ADDRESS=$ADDRESS2 ; fi # use alternate address if specified
 if [[ $1 = "" ]] ; then echo "insert address" ; fi # use alternate address if specified
 while true;do
@@ -12,7 +12,7 @@ while true;do
     #echo $ADDRESS;
     if [[ $ADDRESS != "" ]] ; then
     echo "$ADDRESS"
-     #   wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
+      #  wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
     fi
     #balance=$(wget -qO- https://blockchain.info/balance?active=$ADDRESS 2>&1 | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
 
