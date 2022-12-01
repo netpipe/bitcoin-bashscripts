@@ -12,7 +12,7 @@ while true;do
     #echo $ADDRESS;
     if [[ $ADDRESS != "" ]] ; then
     echo "$ADDRESS"
-      #  wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
+        wget -qO- https://blockchain.info/balance?active=$ADDRESS > ./tbalance
     fi
     #balance=$(wget -qO- https://blockchain.info/balance?active=$ADDRESS 2>&1 | grep -Po '"total_received":\K[0-9]+' | awk '{s=$1/100000000} END {printf "%0.8f\n", s}')
 
